@@ -75,8 +75,41 @@ console.log(JSON.stringify(entries()));
 module.exports = {
   entry: entries(),
   output: {
-    filename: './[name].[hash].js',
-    path: path.resolve(__dirname, 'dist')
+    filename: './[name].js',
+    path: path.resolve(__dirname, 'dist'),
+    chunkFilename: '[name].js'
+  },
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all'
+  //   }
+  // },
+
+  optimization: {
+    splitChunks: {
+      // chunks: 'initial',
+      cacheGroups: {
+      // 提取 node_modules 中代码
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'async'
+        }
+        // commons: {
+        // // async 设置提取异步代码中的公用代码
+        //   chunks: 'async',
+        //   name: 'commons-async',
+        //   /**
+        //  * minSize 默认为 30000
+        //  * 想要使代码拆分真的按照我们的设置来
+        //  * 需要减小 minSize
+        //  */
+        //   minSize: 0,
+        //   // 至少为两个 chunks 的公用代码
+        //   minChunks: 2
+        // }
+      }
+    }
   },
   module: {
     rules: [
@@ -104,5 +137,6 @@ module.exports = {
     hot: true,
     contentBase: path.join(__dirname, 'dist'),
     port: 9000
-  }
+  },
+  devtool: 'source-map'// 'cheap-module-eval-source-map'
 };
