@@ -1,0 +1,13 @@
+node_modules
+dist
+cache/
+vendor/
+/config.js
+*.log
+.idea/
+/build/entryFilters.js
+.tags*
+package-lock.json
+deploy/dist*
+.vscode*
+.DS_Store

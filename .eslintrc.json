@@ -1,0 +1,22 @@
+{
+  "root": true,
+  "parserOptions": {
+  },
+  "globals": {
+    "HTMLElement": false,
+    "NodeList": false,
+    "Element": false,
+    "XMLHttpRequest": false,
+    "Event": false
+  },
+  "extends": "standard",
+  "plugins": [
+  ],
+  "rules": {
+    "arrow-parens": 0,
+    "semi": [2, "always"],
+    "operator-linebreak": ["error","before"],
+    "generator-star-spacing": 0,
+    "no-eval": 0
+  }
+}
