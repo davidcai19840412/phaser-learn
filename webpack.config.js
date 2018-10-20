@@ -77,6 +77,7 @@ module.exports = {
   output: {
     filename: './[name].js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     chunkFilename: '[name].js'
   },
   // optimization: {
@@ -119,6 +120,12 @@ module.exports = {
           'style-loader',
           'css-loader'
         ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader'
+        ]
       }
     ]
   },
@@ -133,10 +140,12 @@ module.exports = {
     ...htmlPlugins(),
     new webpack.HotModuleReplacementPlugin()
   ],
-  devServer: {
-    hot: true,
-    contentBase: path.join(__dirname, 'dist'),
-    port: 9000
-  },
-  devtool: 'source-map'// 'cheap-module-eval-source-map'
+  // devServer: {
+  //   hot: true,
+  //   contentBase: path.join(__dirname, 'dist'),
+  //   port: 9000
+  // },
+  // devtool: 'source-map'// 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-eval-source-map',
+  mode: 'development'
 };
